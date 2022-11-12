@@ -1,4 +1,5 @@
-﻿using MainApp.Stores;
+﻿using MainApp.Services;
+using MainApp.Stores;
 using MainApp.ViewModels;
 using System.Windows;
 
@@ -12,6 +13,7 @@ namespace MainApp
         protected override void OnStartup(StartupEventArgs e)
         {
             NavigationStore navigationStore = new NavigationStore();
+
             navigationStore.CurrentViewModel = new AccountViewModel(navigationStore);
 
             MainWindow window = new MainWindow()
