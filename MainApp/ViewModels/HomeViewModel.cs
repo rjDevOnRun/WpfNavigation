@@ -1,4 +1,5 @@
 ﻿using MainApp.Commands;
+using MainApp.Services;
 using MainApp.Stores;
 using System.Windows.Input;
 
@@ -7,6 +8,7 @@ namespace MainApp.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
+
         private string _title = "This is the Home Page";
 
         public string Title
@@ -26,8 +28,9 @@ namespace MainApp.ViewModels
             _navigationStore = navigationStore;
 
             NavigateAccountCommand = new NagivateCommand<AccountViewModel>(
-                _navigationStore,
-                () => new AccountViewModel(_navigationStore));
+                new NavigationService<AccountViewModel>(
+                    _navigationStore,
+                    () => new AccountViewModel(_navigationStore)));
         }
     }
 }

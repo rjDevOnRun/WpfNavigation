@@ -1,4 +1,5 @@
 ﻿using MainApp.Commands;
+using MainApp.Services;
 using MainApp.Stores;
 using System.Windows.Input;
 
@@ -26,8 +27,9 @@ namespace MainApp.ViewModels
             _navigationStore = navigationStore;
 
             NavigateHomeCommand = new NagivateCommand<HomeViewModel>(
+                new NavigationService<HomeViewModel>(
                 _navigationStore,
-                () => new HomeViewModel(_navigationStore));
+                () => new HomeViewModel(_navigationStore)));
         }
     }
 }
